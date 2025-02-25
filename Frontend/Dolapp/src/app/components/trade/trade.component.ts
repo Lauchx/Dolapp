@@ -19,7 +19,8 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 })
 export class TradeComponent {
 
-  myTheme = themeQuartz.withParams({
+  // add table theme 
+  myTheme: Theme= themeQuartz.withParams({
     backgroundColor: 'rgb(17, 61, 61)',
     foregroundColor: 'rgb(182, 243, 238)',
     headerTextColor: 'rgb(132, 241, 232)',
@@ -27,18 +28,18 @@ export class TradeComponent {
     oddRowBackgroundColor: 'rgb(0, 0, 0, 0.03)',
     headerColumnResizeHandleColor: 'rgb(0, 0, 0)',
   });
-  theme: Theme | "legacy" = this.myTheme;
   rowData = [
-    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+    { Date: "Tesla", trade: "Model Y", currency: "3", Amount: 64950, TypePay: "reue" },
+    { Date: "Ford", trade: "F-Series",currency: true, Amount: 33850, TypePay: "2" },
+    { Date: "Toyota", trade: "Corolla",currency: 3, Amount: 29600, TypePay: false },
   ];
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
-    { field: "make", filter: true },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric" }
+    { field: "Date", headerName:"Fecha", filter: true},
+    { field: "trade", headerName: "Operación", editable: true, },
+    { field: "currency", headerName:"Moneda"},
+    { field: "Amount", headerName: "Monto AR$" },
+    { field: "TypePay", headerName: "Tipo de pago" }
   ];
 }
