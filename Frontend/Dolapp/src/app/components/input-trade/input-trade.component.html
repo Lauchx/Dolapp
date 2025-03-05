@@ -1,0 +1,47 @@
+<!-- <div class="input-row">
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()">X</button>
+    <input type="date" />
+    <input type="text" placeholder="Operación" />
+    <select>
+        <option value="USD">USD</option>
+        <option value="AR$">AR$</option>
+        <option value="EUR">EUR</option>
+    </select>
+    <input type="number" placeholder="Monto" />
+    <select>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Transferencia">Transferencia</option>
+        <option value="Cheque">Cheque</option>
+    </select>
+    <button (click)="addTrade()">Agregar</button>
+</div> -->
+
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Operación</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal(true)"></button>
+</div>
+<div class="modal-body">
+    <form>
+        <input type="date" [(ngModel)]="date" name="date" class="form-control" />
+        <select class="form-control" placeholder="Operación">
+            <option value="" disabled selected>Seleciona la Moneda</option>
+            <option value="Compra">Compra</option>
+            <option value="Venta">Venta</option>
+        </select>
+        <select class="form-control" placeholder="Moneda">
+            <option value="" disabled selected>Seleciona la Moneda</option>
+            <option value="USD">USD</option>
+            <option value="AR$">AR$</option>
+            <option value="EUR">EUR</option>
+        </select>
+        <input type="number" step="any" placeholder="Monto" class="form-control" />
+        <select class="form-control">
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia">Transferencia</option>
+            <option value="Cheque">Cheque</option>
+        </select>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="saveTrade()">Guardar</button>
+</div>

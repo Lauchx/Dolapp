@@ -1,6 +1,34 @@
+<div class="container">
+    <div class="buttons-container">
+        <button class="addTrade btn btn-info" (click)="addTrade()"><strong>Agregar Operación</strong></button>
+        <button class="withdrawals btn" (click)="addWithdrawals()"><strong>Retiros</strong></button>
+    </div>
+    <div class="table-container">
+        <ag-grid-angular [rowData]="rowData" [columnDefs]="colDefs" [theme]="myTheme"
+            (cellValueChanged)="onCellValueChanged($event)" />
 
-<body>
-    <button class="withdrawals">Retiros</button>
+            <p>Dolarés: <strong>{{dollars}}</strong></p> <p>Pesos: <strong>{{dollars}}</strong></p><p>Ganancia: <strong>{{dollars}}</strong></p>
+    </div>
+   
+</div>
 
-    <ag-grid-angular [rowData]="rowData" [columnDefs]="colDefs" [theme]="myTheme" />
-</body>
+<!-- 
+<table>
+    <thead>
+        <th>Fecha</th>
+        <th>Operación</th>
+        <th>Moneda</th>
+        <th>Monto AR$</th>
+        <th>Tipo de pago</th>
+    </thead>
+    <tbody>
+        aca iria el codigo para rellenar la tabla (no interesa en este caso)
+    </tbody>
+    <tfoot>
+        <input type="date">
+        <input type="text">
+        <input type="text">
+        <input type="number">
+        <input type="text">
+    </tfoot>
+</table> -->
