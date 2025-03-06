@@ -1,3 +1,32 @@
-.form-control{
-    margin:10px;
+.modal-header {
+    color: white;
+    background: rgb(8, 97, 97);
+    border: 0px;
+}
+
+.modal-body {
+    color: black;
+    background: linear-gradient(rgb(8, 97, 97) 65%, rgb(112, 206, 198));
+    border: 0px;
+}
+
+.modal-footer {
+    border: 0px;
+    background: rgb(112, 206, 198);
+}
+
+.form-control {
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.saveTrade {
+    /*transition: all 0.9 ease-in-out;*/
+    transition: all 0.5s ease-out allow-discrete;
+}
+
+.saveTrade:hover {
+    color: black;
+    box-shadow: inset 0 0 100px 100px  rgb(96, 182, 175), 3px 3px rgb(0, 0, 0);
+    border-color:transparent;
 }

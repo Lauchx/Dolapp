@@ -38,12 +38,22 @@ p{
     padding: 10px 15px;
     font-size: 14px;
 }
-.withdrawals
+.addTrade{
+    background:  #85f7ed;
+    color: black;
+}
+.addTrade:hover{
+    outline: 3px solid white;
+    background:  #b6f3ee;
+    color: black;
+}
+.withdrawals 
 {
-    background: #b6c2b8;
+    background: #b9dddd;
     color: black;
 }
 .withdrawals:hover{
-    background: #bfaf87;
+    outline: 3px solid white;
+    background: #70cec6;
     color: black;
 }

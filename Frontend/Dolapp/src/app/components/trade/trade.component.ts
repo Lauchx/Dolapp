@@ -117,9 +117,9 @@ export class TradeComponent {
     { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" }
   ];
   colDefs: ColDef[] = [
-    { field: "Date", headerName: "Fecha" },
+    { field: "Date", headerName: "Fecha", editable:true},
     { field: "Trade", headerName: "Operación", editable: true, filter:true },
-    { field: "Currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] } },
+    { field: "Currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter:true},
     { field: "Amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
     { field: "TypePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia', 'Cheque'] } }
   ];

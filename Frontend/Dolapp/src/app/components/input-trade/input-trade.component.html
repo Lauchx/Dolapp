@@ -24,17 +24,18 @@
     <form>
         <input type="date" [(ngModel)]="date" name="date" class="form-control" />
         <select class="form-control" placeholder="Operación">
-            <option value="" disabled selected>Seleciona la Moneda</option>
+            <option value="" disabled selected>Seleciona la Operación</option>
             <option value="Compra">Compra</option>
             <option value="Venta">Venta</option>
         </select>
         <select class="form-control" placeholder="Moneda">
             <option value="" disabled selected>Seleciona la Moneda</option>
             <option value="USD">USD</option>
-            <option value="AR$">AR$</option>
             <option value="EUR">EUR</option>
+            <option value="AR$">AR$</option>
         </select>
         <input type="number" step="any" placeholder="Monto" class="form-control" />
+        <input type="number" step="any" placeholder="Tipo de cambio" class="form-control" />
         <select class="form-control">
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
@@ -43,5 +44,5 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="saveTrade()">Guardar</button>
+    <button type="button" class="btn saveTrade" (click)="saveTrade()">Guardar</button>
 </div>
