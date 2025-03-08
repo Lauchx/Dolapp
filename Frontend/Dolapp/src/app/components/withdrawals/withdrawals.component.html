@@ -3,15 +3,15 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="closeModal(true)"></button>
 </div>
 <div class="modal-body">
-    <form>
+    <form >
         <input type="date" [(ngModel)]="date" name="date" class="form-control" />
-        <select class="form-control" placeholder="Moneda">
+        <select class="form-control"  [(ngModel)]="selectCurrency" name="selectCurrency" placeholder="Moneda">
             <option value="" disabled selected>Seleciona la Moneda</option>
             <option value="USD">USD</option>
             <option value="AR$">AR$</option>
             <option value="EUR">EUR</option>
         </select>
-        <input type="number" step="any" placeholder="Monto" class="form-control" />
+        <input type="number" *ngIf="selectCurrency != 'AR$' && selectCurrency !== '' " step="any" placeholder="Monto" class="form-control" />
         <input type="number" step="any" placeholder="Tipo de cambio" class="form-control" />
         <select class="form-control">
             <option value="Efectivo">Efectivo</option>
@@ -21,5 +21,5 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="saveWithdrawals()">Retirar</button>
+    <button type="button" class="btn saveWithdrawals" (click)="saveWithdrawals()">Retirar</button>
 </div>

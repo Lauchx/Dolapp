@@ -9,9 +9,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class WithdrawalsComponent {
   constructor(private activeModal: NgbActiveModal) { }
+  selectCurrency: string = ""
   date: string = ""
   ngOnInit(){
-    this.date = new Date().toISOString().split('T')[0]
+    this.date = new Date().toLocaleDateString('sv-SE').split('T')[0]
   }
   saveWithdrawals() {
     console.log("save")

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // componentes
 import { HeaderComponent } from './components/header/header.component';
 import { TradeComponent } from './components/trade/trade.component';
@@ -14,6 +14,7 @@ import { AgGridModule } from 'ag-grid-angular';
 // ng-bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WithdrawalsComponent } from './components/withdrawals/withdrawals.component';
+
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { WithdrawalsComponent } from './components/withdrawals/withdrawals.compo
     AgGridAngular,
     AgGridModule,
     NgbModule,
-    FormsModule
+    FormsModule,         // 👈 Asegúrate de que esto está aquí
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

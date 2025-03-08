@@ -5,7 +5,7 @@
     </div>
     <div class="table-container">
         <ag-grid-angular [rowData]="rowData" [columnDefs]="colDefs" [theme]="myTheme"
-            (cellValueChanged)="onCellValueChanged($event)" />
+            (cellValueChanged)="onCellValueChanged($event)"  (gridSizeChanged)="onGridSizeChanged($event)"/>
 
             <p>Dolarés: <strong>{{dollars}}</strong></p> <p>Pesos: <strong>{{dollars}}</strong></p><p>Ganancia: <strong>{{dollars}}</strong></p>
     </div>

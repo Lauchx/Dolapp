@@ -3,6 +3,10 @@
     background: rgb(8, 97, 97);
     border: 0px;
 }
+.btn-close:focus{
+    outline: none;
+    box-shadow: none;
+}
 
 .modal-body {
     color: black;
@@ -21,7 +25,6 @@
 }
 
 .saveTrade {
-    /*transition: all 0.9 ease-in-out;*/
     transition: all 0.5s ease-out allow-discrete;
 }
 

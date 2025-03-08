@@ -11,7 +11,7 @@ export class InputTradeComponent {
   constructor(private activeModal: NgbActiveModal) { }
   date: string = ""
   ngOnInit() {
-    this.date = new Date().toISOString().split('T')[0]
+    this.date = new Date().toLocaleDateString('sv-SE').split('T')[0]
   }
 
   saveTrade() {

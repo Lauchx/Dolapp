@@ -39,99 +39,27 @@ export class TradeComponent {
     headerBackgroundColor: 'rgb(8, 97, 97)',
     oddRowBackgroundColor: 'rgb(0, 0, 0, 0.03)',
     headerColumnResizeHandleColor: 'rgb(0, 0, 0)',
-
   });
   rowData = [
-    { Date: "2024-02-21", Trade: "Venta", Currency: "USD", Amount: 64950, TypePay: "Efectivo" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-10-21", Trade: "Venta", Currency: "EUR", Amount: 29600, TypePay: "Efectivo" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2028-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-10-21", Trade: "Venta", Currency: "EUR", Amount: 29600, TypePay: "Efectivo" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "1900-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "1999-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Retiros", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-10-21", Trade: "Venta", Currency: "EUR", Amount: 29600, TypePay: "Efectivo" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-10-21", Trade: "Venta", Currency: "EUR", Amount: 29600, TypePay: "Efectivo" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2025-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" },
-    { Date: "2024-03-21", Trade: "Compra", Currency: "USD", Amount: 33850, TypePay: "Transferencia" }
+    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "USD", amount: 64950, amountForeignCurrency:2, typePay: "Efectivo" },
+    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "EUR", amount: 64950, amountForeignCurrency:2, typePay: "Efectivo" },
   ];
   colDefs: ColDef[] = [
-    { field: "Date", headerName: "Fecha", editable:true},
-    { field: "Trade", headerName: "Operación", editable: true, filter:true },
-    { field: "Currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter:true},
-    { field: "Amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
-    { field: "TypePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia', 'Cheque'] } }
+    { field: "date", headerName: "Fecha", editable:true},
+    { field: "trade", headerName: "Operación", editable: true, filter:true },
+    { field: "exchangeRate", headerName: "Tipo de cambio", editable: true, type: 'numericColumn' },
+    { field: "amountForeignCurrency", headerName: "Monto moneda extranjera", editable: true, type: 'numericColumn' },
+    { field: "amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
+    { field: "currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter:true},
+    { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia', 'Cheque'] } }
   ];
 
-  
   addTrade() {
     const ngModal = this.ngModal.open(InputTradeComponent, { backdrop: 'static' })
     ngModal.result.then(resultado => {
       if (resultado) {
         console.log("this")
       } else {
-
       }
     })
   }
@@ -147,5 +75,8 @@ export class TradeComponent {
 
       }
     })
+  }
+  onGridSizeChanged(params: any) {
+    params.api.sizeColumnsToFit();
   }
 }
