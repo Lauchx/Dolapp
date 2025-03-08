@@ -41,8 +41,9 @@ export class TradeComponent {
     headerColumnResizeHandleColor: 'rgb(0, 0, 0)',
   });
   rowData = [
-    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "USD", amount: 64950, amountForeignCurrency:2, typePay: "Efectivo" },
-    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "EUR", amount: 64950, amountForeignCurrency:2, typePay: "Efectivo" },
+    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "USD", amount: 70000, amountForeignCurrency:2, typePay: "Efectivo" },
+    { date: "2024-02-21", trade: "Compra", exchangeRate:"1201", currency: "EUR", amount: 64950, amountForeignCurrency:54, typePay: "Efectivo" },
+    { date: "2024-02-21", trade: "Retiro", currency: "EUR", amount: 50, typePay: "Efectivo" },
   ];
   colDefs: ColDef[] = [
     { field: "date", headerName: "Fecha", editable:true},

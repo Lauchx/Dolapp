@@ -11,8 +11,8 @@
             <option value="AR$">AR$</option>
             <option value="EUR">EUR</option>
         </select>
-        <input type="number" *ngIf="selectCurrency != 'AR$' && selectCurrency !== '' " step="any" placeholder="Monto" class="form-control" />
-        <input type="number" step="any" placeholder="Tipo de cambio" class="form-control" />
+        <input type="number"  step="any" placeholder="Monto" class="form-control" />
+        <input type="number" *ngIf="selectCurrency != 'AR$' && selectCurrency !== '' " step="any" placeholder="Tipo de cambio" class="form-control" />
         <select class="form-control">
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
