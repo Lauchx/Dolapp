@@ -10,13 +10,13 @@
 
 .modal-body {
     color: black;
-    background: linear-gradient(rgb(8, 97, 97) 65%, rgb(112, 206, 198));
+    background: linear-gradient(#086161 65%, #116e65);
     border: 0px;
 }
 
 .modal-footer {
     border: 0px;
-    background: rgb(112, 206, 198);
+    background: #116e65;
 }
 
 .form-control {
@@ -33,12 +33,15 @@
     color: black;
     box-shadow: inset 0 0 100px 100px  rgb(96, 182, 175), 3px 3px rgb(0, 0, 0);
     border-color:transparent;
+    border-radius: 20px;
 }
 .saveWithdrawals{
     transition: all 0.5s ease-out allow-discrete;
+    border-radius: 10px 10px;
 }
 .saveWithdrawals:hover{
     color: black;
     box-shadow: inset 0 0 100px 100px  rgb(96, 182, 175), 3px 3px rgb(0, 0, 0);
     border-color:transparent;
 }
+

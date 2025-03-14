@@ -14,6 +14,7 @@ import { AgGridModule } from 'ag-grid-angular';
 // ng-bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WithdrawalsComponent } from './components/withdrawals/withdrawals.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,8 +32,9 @@ import { WithdrawalsComponent } from './components/withdrawals/withdrawals.compo
     AgGridAngular,
     AgGridModule,
     NgbModule,
-    FormsModule,         // 👈 Asegúrate de que esto está aquí
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,51 +1,41 @@
 ag-grid-angular {
-    margin: 0px auto;
     width: 100%;
-    height: 500px;
-    scrollbar-color: rgb(46, 218, 12);
+    height: 700px;
 }
 p{
     font-size: 23px;
-   
+    margin: 10px;
 }
 .table-container{
-    margin-top: 0px;
+    margin: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 80vh; 
     width: 100%;
-    resize: both; /* Permite cambiar tamaño horizontal y vertical */
-    overflow: auto; 
+    resize: both;
+    overflow:auto; 
+    margin: 15px;
 }
-.buttons-container{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;  
-    margin-top: 20px;
-}
-
 .container {
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center; 
-    width: 61%; 
+    width: 100%; 
     margin: 0 auto;
+    /*A PARITR DE ACA PERRRO*/
 }
-
 
 .withdrawals, .addTrade {
     padding: 10px 15px;
-    font-size: 14px;
+    width: 100%;
+    margin-top: 10px;
 }
 .addTrade{
     background:  #85f7ed;
     color: black;
 }
 .addTrade:hover{
-    outline: 3px solid white;
+    outline: 1px solid white;
     background:  #b6f3ee;
     color: black;
 }
@@ -55,7 +45,35 @@ p{
     color: black;
 }
 .withdrawals:hover{
-    outline: 3px solid white;
+    outline: 1px solid white;
     background: #70cec6;
     color: black;
+}
+.currency-container{
+    display: flex;
+    flex-direction: column;
+    float:inline-end;
+    background: #2c2c2c57;
+    justify-content: center;
+    border-radius: 10px;
+}
+.currency-select, .currency-option{ 
+    color: #ddd;
+    border: 0px;
+    justify-content: center;
+}
+.currency-select{
+    background: transparent;
+}
+.currency-option{
+    background: #1a1a1a;
+}
+.left-container{
+    display: flex;
+    flex-direction: column;
+}
+.revenue-container{
+    margin-top: 10px;
+    background: #2c2c2c57;
+    border-radius: 10px;
 }

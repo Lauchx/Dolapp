@@ -1,17 +1,30 @@
 <div class="container">
+    <div class="left-container">
+        <div class="currency-container">
+            <select class="currency-select" [(ngModel)]="currencyName" (change)="changeCurrency()" name="currencyAmount " id="currency">
+                <option class="currency-option" value="ARS">ARS</option>
+                <option class="currency-option" value="USD">USD</option>
+                <option class="currency-option" value="EUR">EUR</option>
+                <option class="currency-option" value="BRL">BRL</option>
+            </select>
+            <p>{{currencyAmount}}</p>
+        </div>
+        <div class="revenue-container">
+            <p>Ganancia en {{currencyName}}</p>
+            <p>{{revenueAmount}}</p>
+        </div>
+    
     <div class="buttons-container">
         <button class="addTrade btn " (click)="addTrade()"><strong>Agregar Operación</strong></button>
         <button class="withdrawals btn" (click)="addWithdrawals()"><strong>Retiros</strong></button>
-    </div>
+    </div></div>
     <div class="table-container">
         <ag-grid-angular [rowData]="rowData" [columnDefs]="colDefs" [theme]="myTheme"
-            (cellValueChanged)="onCellValueChanged($event)"  (gridSizeChanged)="onGridSizeChanged($event)"/>
-
-            <p>Dolarés: <strong>{{dollars}}</strong></p> <p>Pesos: <strong>{{dollars}}</strong></p><p>Ganancia: <strong>{{dollars}}</strong></p>
+            (cellValueChanged)="onCellValueChanged($event)" (gridSizeChanged)="onGridSizeChanged($event)" />
     </div>
-   
-</div>
 
+</div>
+<!-- <p>Dolarés: <strong>{{dollars}}</strong></p> <p>Pesos: <strong>{{dollars}}</strong></p><p>Ganancia: <strong>{{dollars}}</strong></p><p>Reales: <strong>{{dollars}}</strong></p><p>Euros: <strong>{{dollars}}</strong></p> -->
 <!-- 
 <table>
     <thead>

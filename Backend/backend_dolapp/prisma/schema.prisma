@@ -15,18 +15,24 @@ datasource db {
 model ExchangeRecords{
   id String @id @default(cuid())
   date DateTime
-  trade String
+  trade Trade // Cambio a trade 
   exchangeRate Float?
   amountForeignCurrency Float?
   amount Float 
   currency Currency 
   typePay TypePay @default(Efectivo)
 }
+// Falta migrar esta parte 
+model CurrencyRevenue{
+  currency Currency  @id
+  amount Float
+  revenue Float
+}
 enum Currency{
   ARS
   USD
   EUR
-  REA
+  BRL // CAMBIAR A BRL 
 }
 enum TypePay{
   Transferencia

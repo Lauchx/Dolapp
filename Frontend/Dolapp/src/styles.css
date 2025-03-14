@@ -1,6 +1,10 @@
 body {
     margin: auto;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background: #06171d;
     color: #f1f1f1;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins/Poppins-Regular.ttf') format('ttf'),
 }

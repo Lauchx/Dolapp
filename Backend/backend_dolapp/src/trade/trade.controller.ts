@@ -5,7 +5,7 @@ import { prisma } from 'prisma/prisma';
 export class TradeController {
     @Get()
     async getAllTrades(){
-       await prisma.exchangeRecords.create({data: {date: new Date(), trade: "h", amount: 2, currency: Currency.EUR, typePay:"Efectivo" }})
+      // await prisma.exchangeRecords.create({data: {date: new Date(), trade: "Venta", amount: 210000, currency: Currency.EUR, typePay:"Transferencia" }})
         return await prisma.exchangeRecords.findMany()
     }
     @Put()

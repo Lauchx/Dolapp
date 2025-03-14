@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import type { ColDef } from 'ag-grid-community';
 import { InputTradeComponent } from '../input-trade/input-trade.component';
@@ -10,7 +10,7 @@ import {
   Theme
 } from 'ag-grid-community';
 import { WithdrawalsComponent } from '../withdrawals/withdrawals.component';
-
+import { CrudService } from '../../services/crud.service';  
 ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-trade',
@@ -19,8 +19,27 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   styleUrl: './trade.component.css'
 })
 export class TradeComponent {
-  constructor(private ngModal: NgbModal) { }
+  currencyName: string = 'ARS'
+  constructor(private ngModal: NgbModal, private service: CrudService) { }
   // add table theme 
+  rowData = []
+  currencyAmount = 0
+  revenueAmount = 0
+
+
+  ngAfterViewInit(){
+    this.service.get("/trade").subscribe(res => {
+      this.rowData = res
+    })
+  }
+
+  changeCurrency(){
+    this.service.getById("/currency", this.currencyName).subscribe(res => {
+      this.currencyAmount = res.amount
+      this.revenueAmount = res.revenue
+    })
+  }
+  
   dollars: number = 0;
   addProduct(): void {
     const ngModal = this.ngModal.open(InputTradeComponent, { backdrop: 'static' });
@@ -32,6 +51,7 @@ export class TradeComponent {
       }
     })
   }
+
   myTheme: Theme = themeQuartz.withPart(colorSchemeDarkWarm).withParams({
     backgroundColor: 'rgb(17, 61, 61)',
     foregroundColor: 'rgb(182, 243, 238)',
@@ -40,18 +60,14 @@ export class TradeComponent {
     oddRowBackgroundColor: 'rgb(0, 0, 0, 0.03)',
     headerColumnResizeHandleColor: 'rgb(0, 0, 0)',
   });
-  rowData = [
-    { date: "2024-02-21", trade: "Venta", exchangeRate:"1200", currency: "USD", amount: 70000, amountForeignCurrency:2, typePay: "Efectivo" },
-    { date: "2024-02-21", trade: "Compra", exchangeRate:"1201", currency: "EUR", amount: 64950, amountForeignCurrency:54, typePay: "Efectivo" },
-    { date: "2024-02-21", trade: "Retiro", currency: "EUR", amount: 50, typePay: "Efectivo" },
-  ];
+
   colDefs: ColDef[] = [
-    { field: "date", headerName: "Fecha", editable:true},
-    { field: "trade", headerName: "Operación", editable: true, filter:true },
+    { field: "date", headerName: "Fecha", editable: true },
+    { field: "trade", headerName: "Operación", editable: true, filter: true },
     { field: "exchangeRate", headerName: "Tipo de cambio", editable: true, type: 'numericColumn' },
     { field: "amountForeignCurrency", headerName: "Monto moneda extranjera", editable: true, type: 'numericColumn' },
     { field: "amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
-    { field: "currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter:true},
+    { field: "currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter: true },
     { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia', 'Cheque'] } }
   ];
 
