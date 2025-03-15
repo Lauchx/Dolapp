@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CurrencyService } from './currency.service';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
-// import { UpdateCurrencyDto } from './dto/update-currency.dto';
+import { UpdateCurrencyDto } from './dto/update-currency.dto';
 import { prisma } from 'prisma/prisma';
 import { Currency } from '@prisma/client';
 
@@ -23,15 +31,14 @@ export class CurrencyController {
 
   @Get(':id')
   async findOne(@Param('id') id: Currency) {
-
-    return await prisma.currencyRevenue.findFirst({where: {currency: id}})
+    return await prisma.currencyRevenue.findFirst({ where: { currency: id } });
     return this.currencyService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateCurrencyDto: UpdateCurrencyDto) {
-  //   return this.currencyService.update(+id, updateCurrencyDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateCurrencyDto: UpdateCurrencyDto) {
+    return this.currencyService.update(+id, updateCurrencyDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
