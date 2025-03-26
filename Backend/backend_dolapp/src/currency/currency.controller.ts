@@ -19,6 +19,7 @@ export class CurrencyController {
 
   @Post()
   create(@Body() createCurrencyDto: CreateCurrencyDto) {
+    console.log(createCurrencyDto)
     return this.currencyService.create(createCurrencyDto);
   }
 
@@ -30,9 +31,8 @@ export class CurrencyController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: Currency) {
+  async findById(@Param('id') id: Currency) {
     return await prisma.currencyRevenue.findFirst({ where: { currency: id } });
-    return this.currencyService.findOne(+id);
   }
 
   @Patch(':id')
