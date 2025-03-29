@@ -1,9 +1,8 @@
-import { IsIn, IsNumber, Min } from "class-validator"
+import { Currency } from "@prisma/client"
+import { IsEnum, IsNumber, Min } from "class-validator"
 
 export class CreateCurrencyDto {
-    @IsIn(['ARS', 'USD', 'EUR', 'BRL'], {
-        message: 'La moneda debe ser una de las siguientes: ARS, USD, EUR, BRL',
-      })
+    @IsEnum(Currency)
     currency: string
     @IsNumber()
     @Min(0)

@@ -11,6 +11,9 @@ import {
 } from 'ag-grid-community';
 import { WithdrawalsComponent } from '../withdrawals/withdrawals.component';
 import { CrudService } from '../../services/crud.service';  
+import { Currency } from '../../modules/Currency';
+import { elementAt } from 'rxjs';
+import { Trade } from '../../modules/Trade';
 ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-trade',
@@ -25,11 +28,20 @@ export class TradeComponent {
   rowData = []
   currencyAmount = 0
   revenueAmount = 0
+  revenueTotal = 0
 
-
-  ngAfterViewInit(){
+  ngOnInit(){
     this.service.get("/trade").subscribe(res => {
+      res.forEach((elem: Trade) =>{
+        elem.date = elem.date.split('T')[0]
+      })
       this.rowData = res
+    })
+    this.service.get("/currency").subscribe(res =>{
+      res.forEach((element: Currency)=> {
+        this.revenueTotal += element.revenue
+      })
+      this.changeCurrency()
     })
   }
 
@@ -45,7 +57,7 @@ export class TradeComponent {
     const ngModal = this.ngModal.open(InputTradeComponent, { backdrop: 'static' });
     ngModal.result.then(resultado => {
       if (resultado) {
-        console.log("this")
+        this.ngOnInit()
       } else {
 
       }
@@ -68,7 +80,7 @@ export class TradeComponent {
     { field: "amountForeignCurrency", headerName: "Monto moneda extranjera", editable: true, type: 'numericColumn' },
     { field: "amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
     { field: "currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter: true },
-    { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia', 'Cheque'] } }
+    { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia'] } }
   ];
 
   addTrade() {

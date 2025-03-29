@@ -1,15 +1,17 @@
 export class Trade{
-    date: Date
+    date: string // Pasa al back como string y lo convierte alli mismo al formato UTC que es el que usa prisma. 
     trade: string
     currency: string
-    amount: number
-    typePay: String
+    amountForeignCurrency: number
+    typePay: string
+    exchangeRate: number
 
-    constructor(date: Date, trade: string, currency: string, amount: number, typePay: string) {
+    constructor(date: string, trade: string, currency: string, amountForeignCurrency: number, typePay: string, exchangeRate:number) {
         this.date = date;
         this.trade = trade;
         this.currency = currency;
-        this.amount = amount;
+        this.amountForeignCurrency = amountForeignCurrency;
         this.typePay = typePay;
+        this.exchangeRate = exchangeRate
     }
 }

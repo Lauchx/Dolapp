@@ -25,7 +25,6 @@ export class CurrencyController {
 
   @Get()
   async findAll() {
-    //await prisma.currencyRevenue.create({data:{currency:"BRL", amount:666, revenue:90}})
     return await prisma.currencyRevenue.findMany();
     //return this.currencyService.findAll();
   }
