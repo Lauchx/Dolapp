@@ -10,7 +10,7 @@ import {
   Theme
 } from 'ag-grid-community';
 import { WithdrawalsComponent } from '../withdrawals/withdrawals.component';
-import { CrudService } from '../../services/crud.service';  
+import { CrudService } from '../../services/crud.service';
 import { Currency } from '../../modules/Currency';
 import { elementAt } from 'rxjs';
 import { Trade } from '../../modules/Trade';
@@ -30,39 +30,38 @@ export class TradeComponent {
   revenueAmount = 0
   revenueTotal = 0
 
-  ngOnInit(){
+  ngOnInit() {
+    this.fillTable()
+    this.fillRevenue()
+  }
+
+  fillTable() {
     this.service.get("/trade").subscribe(res => {
-      res.forEach((elem: Trade) =>{
+      res.forEach((elem: Trade) => {
         elem.date = elem.date.split('T')[0]
       })
+      console.log(res)
       this.rowData = res
+      console.log(this.rowData, " -> rowData ")
     })
-    this.service.get("/currency").subscribe(res =>{
-      res.forEach((element: Currency)=> {
+  }
+  fillRevenue() {
+    this.service.get("/currency").subscribe(res => {
+      res.forEach((element: Currency) => {
         this.revenueTotal += element.revenue
       })
       this.changeCurrency()
     })
   }
 
-  changeCurrency(){
+  changeCurrency() {
     this.service.getById("/currency", this.currencyName).subscribe(res => {
       this.currencyAmount = res.amount
       this.revenueAmount = res.revenue
     })
   }
-  
-  dollars: number = 0;
-  addProduct(): void {
-    const ngModal = this.ngModal.open(InputTradeComponent, { backdrop: 'static' });
-    ngModal.result.then(resultado => {
-      if (resultado) {
-        this.ngOnInit()
-      } else {
 
-      }
-    })
-  }
+  dollars: number = 0;
 
   myTheme: Theme = themeQuartz.withPart(colorSchemeDarkWarm).withParams({
     backgroundColor: 'rgb(17, 61, 61)',
@@ -87,8 +86,9 @@ export class TradeComponent {
     const ngModal = this.ngModal.open(InputTradeComponent, { backdrop: 'static' })
     ngModal.result.then(resultado => {
       if (resultado) {
-        console.log("this")
+        this.fillTable()
       } else {
+        console.log("false")
       }
     })
   }

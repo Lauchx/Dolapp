@@ -37,6 +37,7 @@ export class InputTradeComponent {
     this.closeModal(true)
   }
   closeModal(bool: boolean) {
+    console.log("Se cierra con" + bool)
     this.activeModal.close(bool)
   }
 
