@@ -10,16 +10,19 @@ model ExchangeRecords{
   id String @id @default(cuid())
   date DateTime
   trade Trade
-  exchangeRate Float?
-  amountForeignCurrency Float?
+  exchangeRate Float
+  amountForeignCurrency Float
   amount Float 
   currency Currency 
   typePay TypePay @default(Efectivo)
+  remainingForeign Float? // opcional porque en la venta no existe
+   // -> Esto se hace para detallar cuanto queda de una moneda asi también tengo el detalle de cuando compre. [Se podria hacer que cuando esto llege a 0 no lo cargue en FindAll para ahorra recursos] | o en el front separar en dos arrays y mostrar todas las compras que esten caducadas. 
+  /// |-> también pienso que la response puede tener dos arrays, uno que sea para las comprar a utilizar y otro arrray que sea con las compras que se utilizaron. 
+  revenue Float? // opcional porque en la compra no existe
 }
 model CurrencyRevenue{
   currency Currency  @id
   amount Float
-  revenue Float
 }
 enum Currency{
   ARS

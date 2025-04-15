@@ -15,6 +15,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WithdrawalsComponent } from './components/withdrawals/withdrawals.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DeleteAndUpdateTradeComponent } from './delete-and-update-trade/delete-and-update-trade.component';
 
 
 
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     TradeComponent,
     InputTradeComponent,
     WithdrawalsComponent,
+    DeleteAndUpdateTradeComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,7 +19,6 @@ export class CurrencyController {
 
   @Post()
   create(@Body() createCurrencyDto: CreateCurrencyDto) {
-    console.log(createCurrencyDto)
     return this.currencyService.create(createCurrencyDto);
   }
 
@@ -35,8 +34,8 @@ export class CurrencyController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCurrencyDto: UpdateCurrencyDto) {
-    return this.currencyService.update(+id, updateCurrencyDto);
+  update(@Param('id') id: Currency, @Body() updateCurrencyDto: UpdateCurrencyDto) {
+    return this.currencyService.update(id, updateCurrencyDto);
   }
 
   @Delete(':id')

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Trade } from '../../modules/Trade';
 import { CrudService } from '../../services/crud.service';
+import { Currency } from '../../modules/Currency';
 @Component({
   selector: 'app-input-trade',
   standalone: false,
@@ -21,23 +22,36 @@ export class InputTradeComponent {
     return new Date(year, month - 1, day);
   }
 
-  saveTrade(){
-    //let tradeDate = this.getLocalDateFromInput()
+  saveTrade() {
+    // Completando los datos para guardar el trade en el db
     let tradeDate = (document.getElementById("date") as HTMLInputElement).value
     let tradeName = (document.getElementById("trade") as HTMLInputElement).value
-    let tradeCurrency = (document.getElementById("currency") as HTMLInputElement).value
+    let tradeCurrency = (document.getElementById("currency-option") as HTMLInputElement).value
     let tradeAmountForeignCurrency = parseFloat((document.getElementById("amountForeignCurrency") as HTMLInputElement).value)
     let tradeTypePay = (document.getElementById("typePay") as HTMLInputElement).value
     let exchangeRate = parseFloat((document.getElementById("exchangeRate") as HTMLInputElement).value)
-    const trade = new Trade(tradeDate, tradeName, tradeCurrency, tradeAmountForeignCurrency, tradeTypePay,exchangeRate);
-    console.log(trade)
-    this.service.post("/trade", trade).subscribe(res =>{
+    const trade = new Trade(tradeDate, tradeName, tradeCurrency, tradeAmountForeignCurrency, tradeTypePay, exchangeRate);
+    // Creando el trade y guardando en la db
+    this.service.postTrade("/trade", trade).subscribe(res => {
       console.log(res)
+      // Modificando el monto en moneda extranjera
+      let foreignCurrency: Currency;
+      if(tradeName == "Compra") {foreignCurrency = new Currency(tradeCurrency, -1 * tradeAmountForeignCurrency)}
+      
+      this.service.patchCurrecy("/currency/" + tradeCurrency, foreignCurrency).subscribe(res => {
+        console.log(res)
+        // Modificando el monto en moneda nacional
+        const nationalCurrency: Currency = new Currency(tradeCurrency, tradeAmountForeignCurrency * exchangeRate)
+        this.service.patchCurrecy("/currency/ARS", nationalCurrency).subscribe(res => {
+          console.log(res)
+          this.closeModal(true)
+        })
+      })
+
+
     })
-    this.closeModal(true)
   }
   closeModal(bool: boolean) {
-    console.log("Se cierra con" + bool)
     this.activeModal.close(bool)
   }
 

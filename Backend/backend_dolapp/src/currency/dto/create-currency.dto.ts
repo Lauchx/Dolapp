@@ -3,11 +3,12 @@ import { IsEnum, IsNumber, Min } from "class-validator"
 
 export class CreateCurrencyDto {
     @IsEnum(Currency)
-    currency: string
+    currency: Currency
     @IsNumber()
     @Min(0)
     amount: number
-    @IsNumber()
-    @Min(0)
-    revenue: number
+    constructor(currency:Currency, amount:number){
+        this.currency = currency
+        this.amount = amount
+    }
 }

@@ -9,10 +9,7 @@
             </select>
             <p>{{currencyAmount}}</p>
         </div>
-        <div class="revenue-container">
-            <p>Ganancia en {{currencyName}}</p> <!--  <button>Ganancia total modal</button> Este boton te muestra la ganancia total (O puede ser al revés que muestre el detalle de la ganancia de todas las monedas por separado) -->
-            <p>{{revenueAmount}}</p>
-        </div>
+        
         <div class="revenue-container">
             <p>Ganancia total</p> 
             <p>{{revenueTotal}}</p>
@@ -24,7 +21,7 @@
     </div></div>
     <div class="table-container">
         <ag-grid-angular [rowData]="rowData" [columnDefs]="colDefs" [theme]="myTheme"
-            (cellValueChanged)="onCellValueChanged($event)" (gridSizeChanged)="onGridSizeChanged($event)" />
+            (cellValueChanged)="onCellValueChanged($event)" (gridSizeChanged)="onGridSizeChanged($event)"   [localeText]="{ noRowsToShow: 'No hay datos por el momento' }"/>
     </div>
 
 </div>

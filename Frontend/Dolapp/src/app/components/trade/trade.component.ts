@@ -7,13 +7,15 @@ import {
   ModuleRegistry,
   colorSchemeDarkWarm,
   themeQuartz,
-  Theme
+  Theme,
+  buttonStyleQuartz
 } from 'ag-grid-community';
 import { WithdrawalsComponent } from '../withdrawals/withdrawals.component';
 import { CrudService } from '../../services/crud.service';
 import { Currency } from '../../modules/Currency';
 import { elementAt } from 'rxjs';
 import { Trade } from '../../modules/Trade';
+import { DeleteAndUpdateTradeComponent } from '../../delete-and-update-trade/delete-and-update-trade.component';
 ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-trade',
@@ -27,7 +29,6 @@ export class TradeComponent {
   // add table theme 
   rowData = []
   currencyAmount = 0
-  revenueAmount = 0
   revenueTotal = 0
 
   ngOnInit() {
@@ -40,6 +41,9 @@ export class TradeComponent {
       res.forEach((elem: Trade) => {
         elem.date = elem.date.split('T')[0]
       })
+      res.forEach((element: Trade) => {
+        this.revenueTotal += element.revenue
+      })
       console.log(res)
       this.rowData = res
       console.log(this.rowData, " -> rowData ")
@@ -47,9 +51,7 @@ export class TradeComponent {
   }
   fillRevenue() {
     this.service.get("/currency").subscribe(res => {
-      res.forEach((element: Currency) => {
-        this.revenueTotal += element.revenue
-      })
+      
       this.changeCurrency()
     })
   }
@@ -57,7 +59,6 @@ export class TradeComponent {
   changeCurrency() {
     this.service.getById("/currency", this.currencyName).subscribe(res => {
       this.currencyAmount = res.amount
-      this.revenueAmount = res.revenue
     })
   }
 
@@ -79,7 +80,14 @@ export class TradeComponent {
     { field: "amountForeignCurrency", headerName: "Monto moneda extranjera", editable: true, type: 'numericColumn' },
     { field: "amount", headerName: "Monto AR$", editable: true, type: 'numericColumn' },
     { field: "currency", headerName: "Moneda", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['USD', 'AR$', 'EUR'] }, filter: true },
-    { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia'] } }
+    { field: "typePay", headerName: "Tipo de pago", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Efectivo', 'Transferencia'] } },
+    { field: "remainingForeign", headerName: "Monto restante", editable: true, type: 'numericColumn' },
+    { field: "revenue", headerName: "Ganancia", editable: true, type: 'numericColumn' },
+    {
+      colId: 'actions',
+      headerName: 'Actions',
+      cellRenderer: DeleteAndUpdateTradeComponent, // Tengo que hacer el componente que sea un boton, con ng-modal en el mismo componente. 
+    },
   ];
 
   addTrade() {
