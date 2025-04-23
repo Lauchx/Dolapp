@@ -22,7 +22,11 @@ export class CrudService {
   postCurrency(params:string, currency: Currency): Observable<any>{
     return this.http.post(this.url + params, currency)
   }
-  patchCurrecy(params:string, currency: Currency): Observable<any>{
-    return this.http.patch(this.url + params, currency)
+  patchCurrecy(params:string, currency: Currency, trade: string): Observable<any>{
+    const body = {
+      ...currency,
+      trade
+    }
+    return this.http.patch(this.url + params, body)
   }
 }

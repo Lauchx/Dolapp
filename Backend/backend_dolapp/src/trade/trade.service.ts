@@ -19,7 +19,7 @@ export class TradeService {
       }
     
       async findAll() {
-   
+       
         return await prisma.exchangeRecords.findMany()
       }
     

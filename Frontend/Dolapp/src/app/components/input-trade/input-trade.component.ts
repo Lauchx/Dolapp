@@ -23,7 +23,7 @@ export class InputTradeComponent {
   }
 
   saveTrade() {
-    // Completando los datos para guardar el trade en el db
+    // Complete the data for save in the data base
     let tradeDate = (document.getElementById("date") as HTMLInputElement).value
     let tradeName = (document.getElementById("trade") as HTMLInputElement).value
     let tradeCurrency = (document.getElementById("currency-option") as HTMLInputElement).value
@@ -31,18 +31,16 @@ export class InputTradeComponent {
     let tradeTypePay = (document.getElementById("typePay") as HTMLInputElement).value
     let exchangeRate = parseFloat((document.getElementById("exchangeRate") as HTMLInputElement).value)
     const trade = new Trade(tradeDate, tradeName, tradeCurrency, tradeAmountForeignCurrency, tradeTypePay, exchangeRate);
-    // Creando el trade y guardando en la db
+    // Create the trade & save in data base
     this.service.postTrade("/trade", trade).subscribe(res => {
       console.log(res)
-      // Modificando el monto en moneda extranjera
-      let foreignCurrency: Currency;
-      if(tradeName == "Compra") {foreignCurrency = new Currency(tradeCurrency, -1 * tradeAmountForeignCurrency)}
-      
-      this.service.patchCurrecy("/currency/" + tradeCurrency, foreignCurrency).subscribe(res => {
+      // Modifing foreing currency amount
+      let foreignCurrency = new Currency(tradeCurrency, tradeAmountForeignCurrency);
+      this.service.patchCurrecy("/currency/" + tradeCurrency, foreignCurrency, tradeName).subscribe(res => {
         console.log(res)
-        // Modificando el monto en moneda nacional
-        const nationalCurrency: Currency = new Currency(tradeCurrency, tradeAmountForeignCurrency * exchangeRate)
-        this.service.patchCurrecy("/currency/ARS", nationalCurrency).subscribe(res => {
+        // Modifing national currency amount
+        const nationalCurrency: Currency = new Currency("ARS", tradeAmountForeignCurrency * exchangeRate)
+        this.service.patchCurrecy("/currency/ARS", nationalCurrency, tradeName).subscribe(res => {
           console.log(res)
           this.closeModal(true)
         })

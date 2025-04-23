@@ -11,7 +11,7 @@ import { CurrencyService } from './currency.service';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
 import { UpdateCurrencyDto } from './dto/update-currency.dto';
 import { prisma } from 'prisma/prisma';
-import { Currency } from '@prisma/client';
+import { Currency, Trade } from '@prisma/client';
 
 @Controller('currency')
 export class CurrencyController {
@@ -24,18 +24,25 @@ export class CurrencyController {
 
   @Get()
   async findAll() {
+
     return await prisma.currencyRevenue.findMany();
     //return this.currencyService.findAll();
   }
 
   @Get(':id')
   async findById(@Param('id') id: Currency) {
+
     return await prisma.currencyRevenue.findFirst({ where: { currency: id } });
   }
 
   @Patch(':id')
-  update(@Param('id') id: Currency, @Body() updateCurrencyDto: UpdateCurrencyDto) {
-    return this.currencyService.update(id, updateCurrencyDto);
+  update(@Param('id') id: Currency, @Body() body: {currency: Currency; amount:number; trade: Trade}) {
+    console.log(body.currency, body.amount)
+    let updateCurrencyDto = new UpdateCurrencyDto()
+    updateCurrencyDto.amount = body.amount
+    updateCurrencyDto.currency = body.currency
+    console.log(updateCurrencyDto)
+    return this.currencyService.update(id, updateCurrencyDto, body.trade);
   }
 
   @Delete(':id')
