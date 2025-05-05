@@ -15,14 +15,14 @@ export class CreateTradeDto {
     @IsNumber()
     @Min(0)
     amountForeignCurrency: number
-    @IsNumber()
-    @Min(0)
-    @IsOptional()
-    amount: number
     @IsEnum(Currency)
     currency: Currency
     @IsEnum(TypePay)
     typePay: TypePay
+    @IsNumber()
+    @Min(0)
+    @IsOptional()
+    amount: number
     @IsNumber()
     @Min(0)
     @IsOptional()
@@ -31,7 +31,5 @@ export class CreateTradeDto {
     @Min(0)
     @IsOptional()
     revenue: number
-    
-   
 
 }

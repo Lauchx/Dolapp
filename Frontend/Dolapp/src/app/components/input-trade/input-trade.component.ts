@@ -22,6 +22,7 @@ export class InputTradeComponent {
     return new Date(year, month - 1, day);
   }
 
+
   saveTrade() {
     // Complete the data for save in the data base
     let tradeDate = (document.getElementById("date") as HTMLInputElement).value

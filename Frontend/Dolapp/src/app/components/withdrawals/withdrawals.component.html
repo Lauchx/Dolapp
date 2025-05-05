@@ -4,20 +4,19 @@
 </div>
 <div class="modal-body">
     <form >
-        <input type="date" [(ngModel)]="date" name="date" class="form-control" />
-        <select class="form-control"  [(ngModel)]="selectCurrency" name="selectCurrency" placeholder="Moneda">
+        <input type="date" id="tradeDate" [(ngModel)]="date" name="date" class="form-control" />
+        <select class="form-control" id="currencyName" [(ngModel)]="selectCurrency" name="selectCurrency" placeholder="Moneda">
             <option value="" disabled selected>Seleciona la Moneda</option>
             <option value="USD">USD</option>
-            <option value="AR$">AR$</option>
+            <option value="ARS">ARS</option>
             <option value="EUR">EUR</option>
             <option value="BRL">BRL</option>
         </select>
-        <input type="number"  step="any" placeholder="Monto" class="form-control" />
-        <input type="number" *ngIf="selectCurrency != 'AR$' && selectCurrency !== '' " step="any" placeholder="Tipo de cambio" class="form-control" />
-        <select class="form-control">
+        <input type="number" id="withdrawalsAmount"  step="any" placeholder="Monto" class="form-control" />
+        <input type="number" id="exchangeRate"  *ngIf="selectCurrency != 'ARS' && selectCurrency !== '' " step="any" placeholder="Tipo de cambio" class="form-control" />
+        <select id="typePay" class="form-control">
             <option value="Efectivo">Efectivo</option>
             <option value="Transferencia">Transferencia</option>
-            <option value="Cheque">Cheque</option>
         </select>
     </form>
 </div>

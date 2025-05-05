@@ -2,5 +2,8 @@
 export class Currency {
         currency: string
         amount: number
-        revenue: number
+        constructor(currency: string, amount: number) {
+                this.currency = currency
+                this.amount = amount
+        }
 }

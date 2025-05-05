@@ -51,13 +51,16 @@ export class TradeComponent {
   }
   fillRevenue() {
     this.service.get("/currency").subscribe(res => {
-      
       this.changeCurrency()
     })
   }
 
   changeCurrency() {
     this.service.getById("/currency", this.currencyName).subscribe(res => {
+      if(!res){
+        this.currencyAmount = 0
+        return
+      }
       this.currencyAmount = res.amount
     })
   }
