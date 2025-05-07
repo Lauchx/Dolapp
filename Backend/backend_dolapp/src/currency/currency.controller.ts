@@ -36,13 +36,13 @@ export class CurrencyController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: Currency, @Body() body: {currency: Currency; amount:number; trade: Trade}) {
+  update(@Param('id') currency: Currency, @Body() body: {currency: Currency; amount:number; trade: Trade}) {
     console.log(body.currency, body.amount)
     let updateCurrencyDto = new UpdateCurrencyDto()
     updateCurrencyDto.amount = body.amount
     updateCurrencyDto.currency = body.currency
     console.log(updateCurrencyDto)
-    return this.currencyService.update(id, updateCurrencyDto, body.trade);
+    return this.currencyService.update(currency, updateCurrencyDto, body.trade);
   }
 
   @Delete(':id')
