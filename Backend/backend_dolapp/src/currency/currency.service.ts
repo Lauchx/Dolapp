@@ -45,11 +45,10 @@ export class CurrencyService {
           throw new BadRequestException('Invalid trade type');
       }
     } catch (error) {
-      console.log(error instanceof PrismaClientKnownRequestError)
       if (error instanceof PrismaClientKnownRequestError || error instanceof PrismaClientValidationError) {
-        throw new InternalServerErrorException('Database error');
+        throw new InternalServerErrorException('The currency don´t exist. Database error');
       }
-      throw error + "HOLA";
+      throw error;
     }
 
   }
@@ -83,6 +82,7 @@ export class CurrencyService {
   remove(id: number) {
     return { status: 200, message: `This action removes a #${id} currency` }
   }
+  
 
   // Auxiliar functions
   // Check if is good request or object

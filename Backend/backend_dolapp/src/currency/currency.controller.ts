@@ -24,7 +24,9 @@ export class CurrencyController {
 
   @Get()
   async findAll() {
-
+    // await prisma.exchangeRecords.deleteMany()
+    // await prisma.currencyRevenue.deleteMany()
+    // await prisma.currencyRevenue.create({data:{currency:"ARS",amount:100000}})
     return await prisma.currencyRevenue.findMany();
     //return this.currencyService.findAll();
   }
@@ -36,13 +38,14 @@ export class CurrencyController {
   }
 
   @Patch(':id')
-  update(@Param('id') currency: Currency, @Body() body: {currency: Currency; amount:number; trade: Trade}) {
+  async update(@Param('id') currency: Currency, @Body() body: {currency: Currency; amount:number; trade: Trade}) {
     console.log(body.currency, body.amount)
     let updateCurrencyDto = new UpdateCurrencyDto()
     updateCurrencyDto.amount = body.amount
     updateCurrencyDto.currency = body.currency
-    console.log(updateCurrencyDto)
-    return this.currencyService.update(currency, updateCurrencyDto, body.trade);
+    const result = await this.currencyService.update(currency, updateCurrencyDto, body.trade);
+    console.log(result)
+    return result
   }
 
   @Delete(':id')

@@ -16,7 +16,9 @@ export class TradeController {
 
   @Post()
   async createTrade(@Body() createTradeDto: CreateTradeDto) {
-    return this.tradeService.create(createTradeDto)
+    const result = await this.tradeService.create(createTradeDto)
+    console.log(result, "__RESULT__")
+    return result
   }
 
   // @Patch(':id')

@@ -15,7 +15,7 @@ import { CrudService } from '../../services/crud.service';
 import { Currency } from '../../modules/Currency';
 import { elementAt } from 'rxjs';
 import { Trade } from '../../modules/Trade';
-import { DeleteAndUpdateTradeComponent } from '../../delete-and-update-trade/delete-and-update-trade.component';
+import { DeleteAndUpdateTradeComponent } from '../delete-and-update-trade/delete-and-update-trade.component';
 ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-trade',
