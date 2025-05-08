@@ -33,7 +33,7 @@ export class CurrencyController {
 
   @Get(':id')
   async findById(@Param('id') id: Currency) {
-
+    //await prisma.currencyRevenue.create({data:{currency:"ARS",amount:10000}})
     return await prisma.currencyRevenue.findFirst({ where: { currency: id } });
   }
 

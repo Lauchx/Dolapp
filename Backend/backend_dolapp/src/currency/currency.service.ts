@@ -30,16 +30,24 @@ export class CurrencyService {
     try {
       if (updateCurrencyDto.amount == null || updateCurrencyDto.currency == null) return { status: 400, message: `Bad request` }
       const actualCurrency = await prisma.currencyRevenue.findFirst({ where: { currency: currency } })
-      if (!actualCurrency) {
-        const createCurrencyDto: CreateCurrencyDto = new CreateCurrencyDto(updateCurrencyDto.currency, updateCurrencyDto.amount)
-        return await this.create(createCurrencyDto)
-      }
+      
       switch (trade) {
         case Trade.Compra:
+          if (!actualCurrency) {
+            const createCurrencyDto: CreateCurrencyDto = new CreateCurrencyDto(updateCurrencyDto.currency, updateCurrencyDto.amount)
+            return await this.create(createCurrencyDto)
+          }
           return this.updateBuy(currency, updateCurrencyDto, actualCurrency)
         case Trade.Venta:
+          if (!actualCurrency) {
+            throw new Error('The currency is not available')
+          }
           return this.updateSell(currency, updateCurrencyDto, actualCurrency)
         case Trade.Retiro:
+          if (!actualCurrency) {
+            console.log(new Error('The currency is not available'))
+            throw new Error('The currency is not available')
+          }
           return this.updateWithdrawals(currency, updateCurrencyDto, actualCurrency)
         default:
           throw new BadRequestException('Invalid trade type');

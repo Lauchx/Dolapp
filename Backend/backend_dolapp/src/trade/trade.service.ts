@@ -12,24 +12,23 @@ export class TradeService {
 
   async create(createTradeDto: CreateTradeDto) {
     try {
+      console.log("--------LLego a trade service --------")
       createTradeDto.amount = createTradeDto.amountForeignCurrency * createTradeDto.exchangeRate
       const actualCurrency = await prisma.currencyRevenue.findFirst({ where: { currency: createTradeDto.currency } })
       console.log(createTradeDto.trade)
       switch (createTradeDto.trade) {
         case Trade.Venta:
           console.log(Trade.Venta)
-          if (!canExecuteTrade(createTradeDto, actualCurrency)) return { status: 400, error: `Trade is not create. Amount is to big.` }
+          if (!canExecuteTrade(createTradeDto, actualCurrency)) throw new Error(`Trade is not create. Amount is to big.`)
           return await processSaleOperation(createTradeDto)
         case Trade.Compra:
-          console.log(Trade.Compra)
           createTradeDto.remainingForeign = createTradeDto.amountForeignCurrency
           // createTradeDto.revenue = 0
           console.log(createTradeDto.revenue + "REVENUE")
           // createTradeDto.revenue -= createTradeDto.amount
           return await prisma.exchangeRecords.create({ data: createTradeDto })
         case Trade.Retiro:
-          console.log(Trade.Retiro)
-          if (!canExecuteTrade(createTradeDto, actualCurrency)) return { status: 400, error: `Trade is not create. Amount is to big.` }
+          if (!canExecuteTrade(createTradeDto, actualCurrency)) throw new Error(`Trade is not create. Amount is to big.`)
           createTradeDto.revenue = 0
           createTradeDto.revenue -= createTradeDto.amount
           return await prisma.exchangeRecords.create({ data: createTradeDto })

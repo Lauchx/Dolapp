@@ -18,6 +18,7 @@ export class TradeController {
   async createTrade(@Body() createTradeDto: CreateTradeDto) {
     const result = await this.tradeService.create(createTradeDto)
     console.log(result, "__RESULT__")
+    console.log("-----Finish-----")
     return result
   }
 

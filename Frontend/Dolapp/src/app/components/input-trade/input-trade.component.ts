@@ -38,15 +38,21 @@ export class InputTradeComponent {
       // Modifing foreing currency amount
       let foreignCurrency = new Currency(tradeCurrency, tradeAmountForeignCurrency);
       this.service.patchCurrecy("/currency/" + tradeCurrency, foreignCurrency, tradeName).subscribe(res => {
-        console.log(res)
+        console.log(res, "hola")
         // Modifing national currency amount
-
-        //_____ SI DEVUELVE UN ERROR ESTO NO TENDRÍA QUE EJECUTARSE____ o En su defecto haga un patch para dos currencys//
-        const nationalCurrency: Currency = new Currency("ARS", tradeAmountForeignCurrency * exchangeRate)
-        this.service.patchCurrecy("/currency/ARS", nationalCurrency, tradeName).subscribe(res => {
-          console.log(res)
-          this.closeModal(true)
-        })
+        if (!res.error) {
+          //_____ SI DEVUELVE UN ERROR ESTO NO TENDRÍA QUE EJECUTARSE____ o En su defecto haga un patch para dos currencys//
+          const nationalCurrency: Currency = new Currency("ARS", tradeAmountForeignCurrency * exchangeRate)
+          this.service.patchCurrecy("/currency/ARS", nationalCurrency, tradeName).subscribe(res => {
+            console.log(res)
+            this.closeModal(true)
+          })
+          console.log("Si entra me pongo re triste")
+        }
+        else{
+          console.log("H")
+        }
+        console.log("No se puede kumpa")
       })
 
 
